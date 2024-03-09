@@ -17,13 +17,17 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
-from products.views import product_list
+from products.views import product_list, product_detail, about, landing, contact
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("", landing, name="landing"),
     path("products/", product_list, name="product_list"),
+    path("products/<int:pk>/", product_detail, name="product_detail"),
+    path("about/", about, name="about"),
+    path("contact/", contact, name="contact"),
     path("__reload__/", include("django_browser_reload.urls")),
 ]
 

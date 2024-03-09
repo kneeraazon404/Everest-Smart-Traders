@@ -103,7 +103,7 @@ JAZZMIN_SETTINGS = {
     # Title on the brand (19 chars max) (defaults to current_admin_site.site_header if absent or None)
     "site_brand": "EST Admin",
     # Logo to use for your site, must be present in static files, used for brand on top left
-    # "site_logo": "books/img/logo.png",
+    # "site_logo": "imgages/logo.jpg",
     # Logo to use for your site, must be present in static files, used for login form logo (defaults to site_logo)
     # "login_logo": None,
     # Logo to use for login form in dark themes (defaults to login_logo)
@@ -241,6 +241,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = "static/"
+
+STATICFILES_DIRS = [BASE_DIR / "static"]
+
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
