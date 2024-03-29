@@ -1,9 +1,9 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
-<div class="container mx-auto px-4 mt-16 mb-4">
+<div class="container mx-auto px-4 mt-8 mb-4">
   <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
     {% for product in products %}
     <div
-      class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 flex flex-col justify-between bg-white hover:shadow-2xl transition-shadow duration-300"
+      class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 flex flex-col justify-between bg-gray-100 hover:shadow-2xl transition-shadow duration-300"
     >
       <a
         href="{{ product.get_absolute_url }}"
@@ -17,7 +17,9 @@
           />
         </div>
         <div class="px-6 py-4">
-          <div class="font-bold text-xl mb-2">{{ product.name }}</div>
+          <div class="font-bold text-xl mb-2 text-gray-800">
+            {{ product.name }}
+          </div>
           <p class="text-gray-700 text-base">
             {{ product.description | truncatewords:10 }}
           </p>
@@ -26,24 +28,53 @@
           <div class="flex flex-wrap">
             {% for tag in product.tags.all %}
             <span
-              class="inline-block bg-gradient-to-r from-indigo-500 to-blue-500 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2"
+              class="inline-block bg-gray-600 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2"
               >{{ tag.name }}</span
             >
             {% endfor %}
           </div>
         </div>
       </a>
-      <!-- Show More Button -->
       <div class="px-6 py-2">
         <button
           onclick="location.href='{{ product.get_absolute_url }}'"
-          class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md text-center transition duration-300 ease-in-out"
+          class="w-full bg-gray-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md text-center transition duration-300 ease-in-out"
         >
           Show More
         </button>
       </div>
     </div>
     {% endfor %}
+  </div>
+  <!-- Pagination Controls -->
+  <div class="mt-8 flex justify-center">
+    {% if products.has_previous %}
+    <a
+      href="?page=1"
+      class="mx-1 px-4 py-2 bg-gray-700 text-white rounded-md hover:bg-gray-600"
+      >First</a
+    >
+    <a
+      href="?page={{ products.previous_page_number }}"
+      class="mx-1 px-4 py-2 bg-gray-700 text-white rounded-md hover:bg-gray-600"
+      >Previous</a
+    >
+    {% endif %}
+    <span class="mx-1 px-4 py-2 bg-gray-700 text-white rounded-md"
+      >Page {{ products.number }} of {{ products.paginator.num_pages }}</span
+    >
+    {% if products.has_next %}
+    <a
+      href="?page={{ products.next_page_number }}"
+      class="mx-1 px-4 py-2 bg-gray-700 text-white rounded-md hover:bg-gray-600"
+      >Next</a
+    >
+    <a
+      href="?page={{ products.paginator.num_pages }}"
+      class="mx-1 px-4 py-2 bg-gray-700 text-white rounded-md hover:bg-gray-600"
+      >Last</a
+    >
+    {% endif %}
   </div>
 </div>
 {% endblock %}

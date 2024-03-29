@@ -2,12 +2,19 @@ from django.shortcuts import render
 from .models import ContactPage, Product
 from django.shortcuts import get_object_or_404, render
 from .models import Product
+from django.core.paginator import Paginator
 
 
 def product_list(request):
-    products = Product.objects.all()
-    context = {"products": products}
-    return render(request, "product_list.html", context)
+
+    products_list = Product.objects.all()
+
+    paginator = Paginator(products_list, 8)
+
+    page_number = request.GET.get("page")
+    products = paginator.get_page(page_number)
+
+    return render(request, "product_list.html", {"products": products})
 
 
 def product_detail(request, pk):
