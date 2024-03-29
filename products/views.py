@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Product
+from .models import ContactPage, Product
 from django.shortcuts import get_object_or_404, render
 from .models import Product
 
@@ -24,4 +24,6 @@ def landing(request):
 
 
 def contact(request):
-    return render(request, "contact.html")
+    contacts = ContactPage.objects.all()
+    context = {"contacts": contacts}
+    return render(request, "contact.html", context)

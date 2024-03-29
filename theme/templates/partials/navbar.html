@@ -1,121 +1,62 @@
 {% load static %}
-<header class="absolute inset-x-0 top-0 z-50">
-  <nav
-    class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
-    aria-label="Global"
-  >
-    <div class="flex lg:flex-1 items-center">
-      <a href="{% url 'landing' %}" class="flex -m-1.5 p-1.5 items-center">
-        <img
-          class="h-8 w-auto mr-2"
-          src="{% static 'images/logo.jpg' %}"
-          alt="Everest Smart Traders Logo"
-        />
-        <span class="text-xl font-semibold">Everest Smart Traders</span>
-      </a>
-    </div>
 
-    <div class="flex lg:hidden">
-      <button
-        type="button"
-        class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-      >
-        <span class="sr-only">Open main menu</span>
-        <svg
-          class="h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          aria-hidden="true"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-          />
-        </svg>
-      </button>
-    </div>
-    <div class="hidden lg:flex lg:gap-x-12">
-      <a
-        href="{% url 'landing' %}"
-        class="text-md font-semibold leading-6 text-gray-900"
-        >Home</a
-      >
-      <a
-        href="{% url 'product_list' %}"
-        class="text-md font-semibold leading-6 text-gray-900"
-        >Products</a
-      >
-      <a
-        href="{% url 'about' %}"
-        class="text-md font-semibold leading-6 text-gray-900"
-        >About EST</a
-      >
-      <a
-        href="{% url 'contact' %}"
-        class="text-md font-semibold leading-6 text-gray-900"
-        >Contact Us</a
-      >
-    </div>
-  </nav>
-  <!-- Mobile menu, show/hide based on menu open state. -->
-  <div class="lg:hidden" role="dialog" aria-modal="true">
-    <!-- Background backdrop, show/hide based on slide-over state. -->
-    <div class="fixed inset-0 z-50"></div>
+<header class="bg-gray-800">
+  <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Global">
     <div
-      class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-indigo-700 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
+      class="flex justify-between items-center py-6 md:justify-start md:space-x-10"
     >
-      <div class="flex items-center justify-between">
-        <a href="#" class="-m-1.5 p-1.5">
-          <span class="sr-only">Everest Smart Traders</span>
-          <img class="h-8 w-auto" src="{% static 'images/logo.jpg' %}" alt="" />
+      <div class="flex justify-start lg:w-0 lg:flex-1">
+        <a href="{% url 'landing' %}" class="flex items-center">
+          <img
+            class="h-10 w-auto sm:h-10"
+            src="{% static 'images/logo.png' %}"
+            alt="Everest Smart Traders Logo"
+          />
+          <span class="ml-3 text-2xl font-bold text-white"
+            >Everest Smart Traders</span
+          >
         </a>
-        <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
-          <span class="sr-only">Close menu</span>
+      </div>
+      <div class="-mr-2 -my-2 md:hidden">
+        <button
+          type="button"
+          class="bg-gray-800 p-2 rounded-md inline-flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700"
+        >
+          <span class="sr-only">Open menu</span>
           <svg
             class="h-6 w-6"
+            xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            stroke-width="1.5"
             stroke="currentColor"
             aria-hidden="true"
           >
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
-              d="M6 18L18 6M6 6l12 12"
+              d="M4 6h16M4 12h16m-7 6h7"
             />
           </svg>
         </button>
       </div>
-      <div class="mt-6 flow-root">
-        <div class="-my-6 divide-y divide-gray-500/10">
-          <div class="space-y-2 py-6">
-            <a
-              href="#"
-              class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-              >Home</a
-            >
-            <a
-              href="#"
-              class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-              >Products</a
-            >
-            <a
-              href="#"
-              class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-              >About EST</a
-            >
-            <a
-              href="#"
-              class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-              >Contact Us</a
-            >
-          </div>
-        </div>
+      <div class="hidden md:flex space-x-10">
+        <a
+          href="{% url 'about' %}"
+          class="text-base font-bold text-white hover:text-gray-300"
+          >About EST</a
+        >
+        <a
+          href="{% url 'product_list' %}"
+          class="text-base font-bold text-white hover:text-gray-300"
+          >Products</a
+        >
+
+        <a
+          href="{% url 'contact' %}"
+          class="text-base font-bold text-white hover:text-gray-300"
+          >Contact Us</a
+        >
       </div>
     </div>
-  </div>
+  </nav>
 </header>

@@ -1,35 +1,46 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
-<div class="container mx-auto px-4 mt-32 mb-4">
-  <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+<div class="container mx-auto px-4 mt-16 mb-4">
+  <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
     {% for product in products %}
     <div
-      class="max-w-sm rounded overflow-hidden shadow-lg m-2 flex flex-col justify-between"
+      class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 flex flex-col justify-between bg-white hover:shadow-2xl transition-shadow duration-300"
     >
-      <img
-        class="w-full"
-        src="{{ product.image.url }}"
-        alt="{{ product.name }}"
-      />
-      <div class="px-6 py-4">
-        <div class="font-bold text-xl mb-2">{{ product.name }}</div>
-        <p class="text-gray-700 text-base">{{ product.description }}</p>
-      </div>
-      <div class="px-6 pt-4 pb-2 flex flex-col justify-between">
-        <div>
-          {% for tag in product.tags.all %}
-          <span
-            class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
-            >{{ tag.name }}</span
-          >
-          {% endfor %}
+      <a
+        href="{{ product.get_absolute_url }}"
+        class="transform transition duration-500 hover:scale-105"
+      >
+        <div class="w-full h-56 bg-gray-200 flex items-center justify-center">
+          <img
+            class="max-h-full max-w-full"
+            src="{{ product.image.url }}"
+            alt="{{ product.name }}"
+          />
         </div>
-        <div class="flex justify-center mt-4">
-          <a
-            href="{{ product.get_absolute_url }}"
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md text-center"
-            >View Details</a
-          >
+        <div class="px-6 py-4">
+          <div class="font-bold text-xl mb-2">{{ product.name }}</div>
+          <p class="text-gray-700 text-base">
+            {{ product.description | truncatewords:10 }}
+          </p>
         </div>
+        <div class="px-6 pt-4 pb-2">
+          <div class="flex flex-wrap">
+            {% for tag in product.tags.all %}
+            <span
+              class="inline-block bg-gradient-to-r from-indigo-500 to-blue-500 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2"
+              >{{ tag.name }}</span
+            >
+            {% endfor %}
+          </div>
+        </div>
+      </a>
+      <!-- Show More Button -->
+      <div class="px-6 py-2">
+        <button
+          onclick="location.href='{{ product.get_absolute_url }}'"
+          class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md text-center transition duration-300 ease-in-out"
+        >
+          Show More
+        </button>
       </div>
     </div>
     {% endfor %}

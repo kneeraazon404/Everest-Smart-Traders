@@ -1,14 +1,39 @@
-<!-- products/templates/products/product_detail.html -->
 {% extends 'base.html' %} {% block content %}
-<div class="container mx-auto px-4 py-8 mt-24 mb-8">
-  <div class="max-w-xl mx-auto">
-    <img
-      src="{{ product.image.url }}"
-      alt="{{ product.name }}"
-      class="w-full mb-8"
-    />
-    <h2 class="text-2xl font-bold mb-2">{{ product.name }}</h2>
-    <p>{{ product.description }}</p>
+<div class="container mx-auto px-4 py-8 mt-16 mb-8">
+  <div class="mx-auto">
+    <!-- Displaying the main product image -->
+    <div class="flex justify-center">
+      <img
+        src="{{ product.image.url }}"
+        alt="{{ product.name }}"
+        class="w-full md:w-1/2 lg:w-1/3 mb-8 object-cover rounded-lg shadow-lg"
+      />
+    </div>
+
+    <!-- Product Details -->
+    <div class="text-center max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold mb-2">{{ product.name }}</h2>
+      <p class="text-gray-600 text-base md:text-lg">
+        {{ product.description }}
+      </p>
+    </div>
+
+    <!-- Displaying all associated images -->
+    <div class="mt-12">
+      <h3 class="text-2xl font-bold mb-4 text-center">More Images</h3>
+      <div class="flex flex-wrap justify-center gap-4">
+        {% for image in product.images.all %}
+        <a href="{{ image.image.url }}" class="w-48 h-48">
+          <img
+            src="{{ image.image.url }}"
+            alt="Additional image for {{ product.name }}"
+            class="object-cover rounded-lg shadow-lg hover:opacity-75 transition-opacity duration-300"
+            loading="lazy"
+          />
+        </a>
+        {% endfor %}
+      </div>
+    </div>
   </div>
 </div>
 {% endblock %}
