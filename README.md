@@ -1,4 +1,4 @@
-# Everest-Smart-Traders 🚀  
+# Everest Smart Traders 🚀  
 ### A Web Application Built with Django and TailwindCSS  
 
 Everest-Smart-Traders is a dynamic and responsive web application designed to streamline trading operations. Combining the power of Django for backend development with the modern and elegant styling of TailwindCSS, this project delivers a seamless user experience for traders and administrators.
