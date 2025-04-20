@@ -93,17 +93,6 @@ python manage.py runserver
 
 Visit the application at `http://127.0.0.1:8000` in your browser.  
 
----
-
-## 📸 Screenshots  
-
-### Dashboard  
-![Dashboard Screenshot](https://via.placeholder.com/800x400?text=Dashboard+Screenshot)  
-
-### Trading Page  
-![Trading Page Screenshot](https://via.placeholder.com/800x400?text=Trading+Page+Screenshot)  
-
----
 
 ## 🎯 Use Cases  
 
